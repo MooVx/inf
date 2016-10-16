@@ -1,0 +1,70 @@
+MakeEmpty
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true NON_WHITE 
+PrintToFile
+GetString true ALPHA 
+PrintToFile
+GetString true ALPHA 
+PrintToFile
+GetString true ALPHA 
+PrintToFile
+GetString true ALPHA 
+PrintToFile
+GetString true ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString false ALPHA 
+PrintToFile
+GetString true NOT_NEW
+PrintToFile
+GetString true NOT_NEW
+PrintToFile
+GetString true NOT_NEW
+PrintToFile
+GetString true NOT_NEW
+PrintToFile
+GetString false NOT_NEW
+PrintToFile
+GetString false NOT_NEW
+PrintToFile
+GetString false NOT_NEW
+PrintToFile
+GetString false NOT_NEW
+PrintToFile
+LengthIs
+CopyString
+PrintToScreen
+Quit

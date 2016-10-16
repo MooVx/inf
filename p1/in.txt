@@ -1,0 +1,22 @@
+cin >> inFileName;
+inFile.open(inFileName.c_str());
+
+cout << "Enter name of output file; press return." << endl;
+cin >> outFileName;
+outFile.open(outFileName.c_str());
+
+cout << "Enter name of input data file; press return." << endl;
+cin >> inDataName;
+
+inData.open(inDataName.c_str());
+
+cout << "Enter name of test run; press return." << endl;
+cin >> outputLabel;
+outFile << outputLabel << endl;
+
+
+inFile >> command;
+numCommands = 0;
+while (command != "Quit") {
+if (command == "GetString"){
+inFile >> skip >> allowed;
