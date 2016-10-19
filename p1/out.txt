@@ -1,4 +1,12 @@
-roo
-cin>>inFileName;inFile.open(inFileName.c_str());cout<<"EnternameofoutputfilepressreturnendlcinoutFileNameoutFileopenoutFileNamec_str());cout << "Enter name of input data file; press return." << endl;cin >> inDataName;inData.open(inDataName.c_str());cout << "Enter name of test run; press return." << endl;
-length of string cout << "Enter name of test run; press return." << endl; is 57
-String to copy: cout << "Enter name of test run; press return." << endl; Copy of string: cout << "Enter name of test run; press return." << endl;
+run2
+
+D
+KL
+DN1
+
+#3
+W
+T3J L1N1JC3 MOZG Z4CZYN4 CZYT4C 4UT0M4TYCZN13 
+1 T3R4Z JUZ N4W3T N13 MY5L1 0 TYM...
+length of string 1 T3R4Z JUZ N4W3T N13 MY5L1 0 TYM... is 36
+String to copy: 1 T3R4Z JUZ N4W3T N13 MY5L1 0 TYM... Copy of string: 1 T3R4Z JUZ N4W3T N13 MY5L1 0 TYM...

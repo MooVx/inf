@@ -1,22 +1,4 @@
-cin >> inFileName;
-inFile.open(inFileName.c_str());
-
-cout << "Enter name of output file; press return." << endl;
-cin >> outFileName;
-outFile.open(outFileName.c_str());
-
-cout << "Enter name of input data file; press return." << endl;
-cin >> inDataName;
-
-inData.open(inDataName.c_str());
-
-cout << "Enter name of test run; press return." << endl;
-cin >> outputLabel;
-outFile << outputLabel << endl;
-
-
-inFile >> command;
-numCommands = 0;
-while (command != "Quit") {
-if (command == "GetString"){
-inFile >> skip >> allowed;
+D0KL4DN1###3 W T3J L1N1JC3 MOZG Z4CZYN4 CZYT4C 4UT0M4TYCZN13 
+1 T3R4Z JUZ N4W3T N13 MY5L1 0 TYM...
+P0W1N13N35 S13 C135ZYC! 
+TYLK0 N13L1CZN1 5¥ W 5T4N13 T0 PRZ3CZYT4C! 6R4TUL4CJ3!

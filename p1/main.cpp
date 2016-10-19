@@ -59,7 +59,7 @@ int main(){
 	    inputString.MakeEmpty();
 
 	else if (command == "PrintToFile")
-	    inputString.PrintToFile(false, outFile);
+	    inputString.PrintToFile(true, outFile);
 
 	else if (command == "PrintToScreen")
 	    inputString.PrintToScreen(true);

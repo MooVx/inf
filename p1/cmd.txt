@@ -1,66 +1,17 @@
 MakeEmpty
+GetString true ALPHA
 PrintToFile
-GetString true NON_WHITE 
+GetString false ALPHA
 PrintToFile
-GetString true NON_WHITE 
+GetString true ALPHA_NUM
 PrintToFile
-GetString true NON_WHITE 
+GetString false ALPHA_NUM
 PrintToFile
-GetString true NON_WHITE 
+GetString true NON_WHITE
 PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true NON_WHITE 
-PrintToFile
-GetString true ALPHA 
-PrintToFile
-GetString true ALPHA 
-PrintToFile
-GetString true ALPHA 
-PrintToFile
-GetString true ALPHA 
-PrintToFile
-GetString true ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
-PrintToFile
-GetString false ALPHA 
+GetString false NON_WHITE
 PrintToFile
 GetString true NOT_NEW
-PrintToFile
-GetString true NOT_NEW
-PrintToFile
-GetString true NOT_NEW
-PrintToFile
-GetString true NOT_NEW
-PrintToFile
-GetString false NOT_NEW
-PrintToFile
-GetString false NOT_NEW
-PrintToFile
-GetString false NOT_NEW
 PrintToFile
 GetString false NOT_NEW
 PrintToFile
