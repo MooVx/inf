@@ -5,10 +5,9 @@ main.o: main.cpp
 	g++ -Wall -c main.cpp -o main.o
 
 pracownik.o:  pracownik.cpp pracownik.h
-	g++ -Wall -c pracownik.cpp 
+	g++ -Wall -c pracownik.cpp -o pracownik.o
 
 .Phony: clean
-
 
 clean:
 	rm -f main main.o pracownik.o 

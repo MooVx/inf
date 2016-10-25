@@ -21,19 +21,19 @@ Contract::Contract(string name, string surname, float pesel, float nip, int hour
 	: Pay(name,surname,pesel,nip) {
 		_hours=hours;
 		_rate=rate;
-		calc_wage();		
+	
 }
 
 Dealer::Dealer(string name, string surname,float pesel, float nip, int sales, float percent)
 	: Pay(name,surname,pesel,nip) {
 		_sales=sales;
-		_percent=percent;
-		calc_wage();		
+		_percent=percent;	
 }
 
 //funkcje print 
 
 void Pay::print(){
+	calc_wage();
 	cout << setw(10) << "Imie: " << _name << endl;
 	cout << setw(10) << "Nazwisko: " << _surname << endl;
 	cout << setw(10) << "Nip: " << _NIP << endl;
@@ -56,7 +56,7 @@ void Contract::print(){
 void Dealer::print(){
 	Pay::print();
 	cout << setw(10) << "Procent: " << _percent << endl;
-	cout << setw(10) << "Sprzedarze: " << _sales << endl;
+	cout << setw(10) << "Sprzedane: " << _sales << endl;
 	cout << setw(10) << "Pensja: " << _salary << endl << endl;
 		
 }
@@ -65,11 +65,11 @@ void Dealer::print(){
 
 void Contract::calc_wage(){
 	if (_hours <= 40)
-		_salary = 4*_hours*_rate;
+		_salary = static_cast<float>(4*_hours*_rate);
 	else
-		_salary = 4*_hours*_rate*1.5;
+		_salary = static_cast<float>(4*_hours*_rate*1.5);
 }
 
 void Dealer::calc_wage(){
-	_salary = _sales*_percent;
+	_salary = static_cast<float>(_sales*_percent);
 }

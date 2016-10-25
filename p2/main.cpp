@@ -8,12 +8,11 @@ const int cnt = 3;
 int main()
 {
     Pay * tab[cnt];
-    tab[0] = new Dealer("Adam", "Adam", 123, 12121212121, 15000, 0.25);
-    tab[1] = new Contract("Michal", "Michal", 555, 34343434343, 10, 120);
-    tab[2] = new Etat("Pele", "Pele", 987, 56565656565, 3400);
+    tab[0] = new Dealer("Adam", "Adam", 123, 212121, 150234, 0.259);
+    tab[1] = new Contract("Michal", "Michal", 555, 344343, 14, 120);
+    tab[2] = new Etat("Pele", "Pele", 987, 565665, 34300);
 
     for (int i = 0; i < cnt; ++i) {
-        tab[i]->calc_wage();
         tab[i]->print();
     }
 
