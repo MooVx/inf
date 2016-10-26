@@ -3,6 +3,8 @@
 #include <iomanip>
 using namespace std;
 
+const int wciecie=12;
+
 //konstruktory
 
 Pay::Pay(string name, string surname, float pesel, float nip){
@@ -34,30 +36,30 @@ Dealer::Dealer(string name, string surname,float pesel, float nip, int sales, fl
 
 void Pay::print(){
 	calc_wage();
-	cout << setw(10) << "Imie: " << _name << endl;
-	cout << setw(10) << "Nazwisko: " << _surname << endl;
-	cout << setw(10) << "Nip: " << _NIP << endl;
-	cout << setw(10) << "Pesel: " << _PESEL << endl;
+	cout << setw(wciecie) << "Imie: " << _name << endl;
+	cout << setw(wciecie) << "Nazwisko: " << _surname << endl;
+	cout << setw(wciecie) << "Nip: " << _NIP << endl;
+	cout << setw(wciecie) << "Pesel: " << _PESEL << endl;
 }
 
 void Etat::print(){
 	Pay::print();
-	cout << setw(10) << "Pensja: " << _salary << endl << endl;
+	cout << setw(wciecie) << "Pensja: " << _salary << endl << endl;
 }
 
 void Contract::print(){
 	Pay::print();
-	cout << setw(10) << "Stawka: " << _rate << endl;
-	cout << setw(10) << "Godziny: " << _hours << endl;
-	cout << setw(10) << "Pensja: " << _salary << endl << endl;
+	cout << setw(wciecie) << "Stawka: " << _rate << endl;
+	cout << setw(wciecie) << "Godziny: " << _hours << endl;
+	cout << setw(wciecie) << "Pensja: " << _salary << endl << endl;
 	
 }
 
 void Dealer::print(){
 	Pay::print();
-	cout << setw(10) << "Procent: " << _percent << endl;
-	cout << setw(10) << "Sprzedane: " << _sales << endl;
-	cout << setw(10) << "Pensja: " << _salary << endl << endl;
+	cout << setw(wciecie) << "Procent: " << _percent << endl;
+	cout << setw(wciecie) << "Sprzedane: " << _sales << endl;
+	cout << setw(wciecie) << "Pensja: " << _salary << endl << endl;
 		
 }
 
