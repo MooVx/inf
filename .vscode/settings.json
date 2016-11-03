@@ -1,0 +1,6 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Enable word based suggestions
+    "editor.wordBasedSuggestions": true
+
+}
