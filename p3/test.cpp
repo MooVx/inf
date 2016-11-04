@@ -1,9 +1,7 @@
-
-#include <iostream>
-#include "Vector.h"
-#include "Iterator.h"
-#include "Firma.h"
-
+//by zygmunt ®
+#include"Company.h"
+#include<iostream>
+#include<fstream>
 using namespace std;
 
 
@@ -30,50 +28,50 @@ int displayMenu()
 int main()
 {
 	try{
-		Vector<Firm> fm;
-		Vector<Firm>::iterator it = fm.begin();
+		TVector<Company> CmpDB;
+		TVector<Company>::iterator it = CmpDB.begin();
 
 		bool done = false;
 		while (!done)
 		{
-			Firm temp;
+			Company temp;
 			string tName;
 			fstream fs;
-			Shop tempShop;
+			ToyShop tempShop;
 			int selection = displayMenu();
 			switch (selection) {
 			case 1:
 				cout << "Podaj nazwe firmy, ktora chcesz dodac:" << endl;
 				cin >> temp;
-				fm.push_back(temp);
+				CmpDB.push_back(temp);
 				break;
 			case 2:
 				cout << "Do ktorej firmy chcesz dodac sklep?" << endl;
 				cin >> tName;
-				it = fm.begin();
-				for (it; it != fm.end(); it+1)
+				it = CmpDB.begin();
+				for (it; it != CmpDB.end(); it++)
 				{
-					if (tName == (*it).Name())
+					if (tName == (*it).getName())
 						break;
 				}
-				if (it != fm.end())
-					(*it).AddPlace();
+				if (it != CmpDB.end())
+					(*it).addStore();
 				else cerr << "Brak firmy" << endl;
 				break;
 			case 3:
 				cout << "Podaj nazwe firmy, ktorej dane chcesz wyswietlic:" << endl;
 				cin >> tName;
-				it = fm.begin();
-				for (it; it != fm.end(); it+1)
+				it = CmpDB.begin();
+				for (it; it != CmpDB.end(); it++)
 				{
-					if (tName == (*it).Name())
+					if (tName == (*it).getName())
 						break;
 				}
-				if (it != fm.end())
+				if (it != CmpDB.end())
 					cout << (*it);
 				break;
 			case 4:
-				fs.open("dane1.txt");
+				fs.open("dane.txt");
 				if (!fs.is_open())
 				{
 					throw "File open error";
@@ -82,35 +80,35 @@ int main()
 				while (!fs.eof())
 				{
 					fs >> temp;
-					fm.push_back(temp);
+					CmpDB.push_back(temp);
 				}
 
 				break;
 			case 5:
 				cout << "Podaj nazwe firmy, ktora chcesz usunac: " << endl;
 				cin >> tName;
-				for (int i = 0; i < fm.current_size(); i++)
-					if (fm[i].Name() == tName)
-						fm.erase(i);
+				for (int i = 0; i < CmpDB.GetSize(); i++)
+					if (CmpDB[i].getName() == tName)
+						CmpDB.erase(i);
 				break;
 			case 6:
-				it = fm.begin();
-				while (it != fm.end())
+				it = CmpDB.begin();
+				while (it != CmpDB.end())
 				{
 					cout << (*it) << endl;
-					++it;
+					it++;
 				}
 				break;
 			case 7:
 				cout << "Podaj adres sklepu, do ktorego chcesz dodac/usunac zabawki: " << endl;
 				int temp_n;
 				cin >> tName >> temp_n;
-				it = fm.begin();
-				for (it; it != fm.end(); ++it)
+				it = CmpDB.begin();
+				for (it; it != CmpDB.end(); it++)
 				{
-					for (int NumberOfStore = 0; NumberOfStore < (*it).Number(); NumberOfStore++)
+					for (int NumberOfStore = 0; NumberOfStore < (*it).GetVecSize(); NumberOfStore++)
 					{
-						tempShop = (*it).PlaceInfo(NumberOfStore);
+						tempShop = (*it).GetShopInfo(NumberOfStore);
 						if (tempShop.GetStreet() == tName && tempShop.GetStNumber() == temp_n)
 							(*it).ModifyStore(NumberOfStore);
 					}
@@ -132,6 +130,6 @@ int main()
 	catch (string er){
 		cout << er;
 	}
-
+	system("PAUSE");
 	return 0;
 }

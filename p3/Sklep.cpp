@@ -27,10 +27,9 @@ void Shop::deleteToy(string toyName)
     }
 }
 
-ostream& operator<<(ostream& out, const Shop& outShop)
-{
+ostream& operator<<(ostream& out, const Shop& outShop){
 	out << "ul." << setw(17) << outShop._st_name 
-    << setw(10)  << outShop._st_number << endl << endl;
+    << setw(10)  << outShop._st_number << endl;
 	out << setw(20) <<"Nazwa zabawki:" << setw(10) << "Cena:"<< setw(10) << "Sztuk:" << endl;
 	for (int i = 0; i < outShop._Toys.current_size(); i++){
 		out << setw(20) << outShop._Toys[i]._name;
@@ -48,4 +47,27 @@ istream& operator>>(std::istream& in, Shop& inShop){
     inShop._Toys.push_back(Toy(name,price,number));
     
     return in;
+}
+
+
+ifstream& operator>>(std::ifstream& in, Shop& inF){
+    string name;
+    float price;
+    int number;
+    in >> name >> number >> price;
+    inF._Toys.push_back(Toy(name,price,number));
+    
+    return in;
+}
+
+ofstream& operator<<(std::ofstream& out, const Shop& outShop){
+	out << outShop._st_name << endl;
+    out << outShop._st_number << endl;
+	for (int i = 0; i < outShop._Toys.current_size(); i++){
+        out<< "##" << endl;
+		out << (outShop._Toys[i])._name << endl;
+        out << outShop._Toys[i]._amount << endl;
+		out << outShop._Toys[i]._price << endl;
+    }
+	return out;
 }

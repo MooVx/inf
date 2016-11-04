@@ -5,8 +5,9 @@
 #include "Iterator.h"
 #include "Sklep.h"
 #include<iomanip>
+#include <fstream> 
 
-using std::string;
+using namespace std;
 
 
 class Firm{
@@ -23,6 +24,9 @@ public:
     string Name(){
         return _name;
     }
+    int Number(){
+        return _number;
+    }
     Shop& PlaceInfo(int pos){
         return _places[pos];
     }
@@ -31,6 +35,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Firm& outF);
 	friend std::istream& operator>>(std::istream& in, Firm& inF);
 	friend std::ifstream& operator>>(std::ifstream& infile, Firm& inF);
+    friend std::ofstream& operator<<(std::ofstream& out, const Firm& outF);
 
 };
 

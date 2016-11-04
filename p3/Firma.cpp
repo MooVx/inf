@@ -45,9 +45,9 @@ void Firm::ModPlace(int number){
 }
 
 ostream& operator<<(ostream& out, const Firm& outF){
-	out << setw(20) << outF._name << endl;
+	out << outF._name << endl;
 	for (int i = 0; i < outF._number; i++){
-		out << outF._places[i];
+		out << outF._places[i]<<"-------"<<endl;
     }
 	return out;
 }
@@ -58,6 +58,36 @@ istream& operator>>(std::istream& in, Firm& inF){
 }
 
 ifstream& operator>>(std::ifstream& infile, Firm& inF){
-////////////////////
+	string temp;
+	if(infile.good()){
+		infile >> inF._name;
+	}
+	infile >> temp;
+	while (infile.good()){
+		if(temp=="####"){
+			string st_name;
+			int number;
+			infile >> st_name;
+			infile >> number;
+			inF._places.push_back(Shop(st_name, number));
+			inF._number=inF._places.current_size(); 
+			infile >> temp;
+			while (infile.good()&&temp=="##"){
+				infile >> inF._places[inF._number - 1];
+				infile >> temp;				
+			}
+		}
+	}
 	return infile;
 }
+
+ofstream& operator<<(std::ofstream& out, const Firm& outF){
+	out << outF._name << endl;
+	for (int i = 0; i < outF._number; i++){
+		out <<"####"<<endl;
+		out << outF._places[i];
+    }
+	return out;
+}
+
+

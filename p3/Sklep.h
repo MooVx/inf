@@ -2,10 +2,11 @@
 #define SHOP
 
 #include<iostream>
+#include<fstream>
 #include "Vector.h"
 #include "Zabawka.h"
 
-using std::string;
+using namespace std;
 
 
 class Shop{
@@ -30,7 +31,8 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& out, const Shop& outShop);
 	friend std::istream& operator>>(std::istream& in, Shop& inShop);
-
+	friend std::ifstream& operator>>(std::ifstream& in, Shop& inF);
+	friend std::ofstream& operator<<(std::ofstream& out, const Shop& outShop);
 };
 
 
