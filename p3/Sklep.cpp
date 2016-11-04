@@ -29,7 +29,8 @@ void Shop::deleteToy(string toyName)
 
 ostream& operator<<(ostream& out, const Shop& outShop)
 {
-	out << "ul. " << outShop._st_name << " " << outShop._st_number << endl;
+	out << "ul." << setw(17) << outShop._st_name 
+    << setw(10)  << outShop._st_number << endl << endl;
 	out << setw(20) <<"Nazwa zabawki:" << setw(10) << "Cena:"<< setw(10) << "Sztuk:" << endl;
 	for (int i = 0; i < outShop._Toys.current_size(); i++){
 		out << setw(20) << outShop._Toys[i]._name;

@@ -9,8 +9,15 @@ using namespace std;
 
 int main(){
   	Vector<Firm> first;
-		Vector<Firm>::iterator first_p = CmpDB.begin();
+		Vector<Firm>::iterator first_p = first.begin();
 
-    Firm
+    Firm x;
+    cin >> x;
+    cout << x << endl ;
+    x.AddPlace();
+
+    cout << x << endl ;
+
+
 
 }

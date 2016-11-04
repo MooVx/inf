@@ -3,6 +3,7 @@
 
 #include<fstream>
 
+
 using namespace std;
 
 void Firm::AddPlace(){
@@ -13,7 +14,7 @@ void Firm::AddPlace(){
     cout << "Numer lokalu ?" << endl;
     cin >> number;
     _places.push_back(Shop(st_name, number));
-    	
+    _number=_places.current_size();
     cout << "Czy chcesz wprowadzic zabawki do tego sklepu T/N?" << endl;
 	char a;
 	cin >> a;

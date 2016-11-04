@@ -16,8 +16,8 @@ private:
     int _number;
 
 public:
-    Firm(string name="nie podano",int number=0)
-        :_name(name), _number(number){}
+    Firm(string name="nie podano")
+        :_name(name), _number(0){}
     ~Firm() {}
     void AddPlace();
     string Name(){
