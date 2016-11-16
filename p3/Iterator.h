@@ -23,7 +23,7 @@ public:
 		if (_position >= (*_ptr).current_size())
 			std::cerr<<"Operation: ++ out of range";
         else{
-            _position++;
+            ++_position;
         }
         return *this;
 	}
@@ -32,11 +32,27 @@ public:
 		if (_position <= 0 )
 			std::cerr<<"Operation: -- out of range";
         else{
-            _position--;
+            --_position;
+        }
+        return *this;
+	}
+    Iterator operator++(int){
+		if (_position >= (*_ptr).current_size())
+			std::cerr<<"Operation: ++ out of range";
+        else{
+            _position++;
         }
         return *this;
 	}
 
+    Iterator operator--(int){
+		if (_position <= 0 )
+			std::cerr<<"Operation: -- out of range";
+        else{
+            _position--;
+        }
+        return *this;
+	}
     Iterator& operator+(int add){
         if (_position > (*_ptr).current_size())
 			std::cerr<<"Operation: + out of range";

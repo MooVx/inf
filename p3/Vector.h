@@ -36,7 +36,7 @@ public:
     }
 
     iterator end(){
-        return (iterator(*this) + _current_size-1);
+        return iterator(*this) + _current_size;
     }
     ~Vector(){ 
         delete [] _tab; 

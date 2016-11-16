@@ -17,6 +17,7 @@ private:
     int _number;
 
 public:
+
     Firm(string name="nie podano")
         :_name(name), _number(0){}
     ~Firm() {}
@@ -35,7 +36,6 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Firm& outF);
 	friend std::istream& operator>>(std::istream& in, Firm& inF);
 	friend std::ifstream& operator>>(std::ifstream& infile, Firm& inF);
-    friend std::ofstream& operator<<(std::ofstream& out, const Firm& outF);
 
 };
 

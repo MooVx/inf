@@ -82,13 +82,4 @@ ifstream& operator>>(std::ifstream& infile, Firm& inF){
 	return infile;
 }
 
-ofstream& operator<<(std::ofstream& out, const Firm& outF){
-	out << outF._name << endl;
-	for (int i = 0; i < outF._number; i++){
-		out <<"####"<<endl;
-		out << outF._places[i];
-    }
-	return out;
-}
-
 

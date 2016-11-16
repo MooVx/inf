@@ -32,7 +32,6 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const Shop& outShop);
 	friend std::istream& operator>>(std::istream& in, Shop& inShop);
 	friend std::ifstream& operator>>(std::ifstream& in, Shop& inF);
-	friend std::ofstream& operator<<(std::ofstream& out, const Shop& outShop);
 };
 
 

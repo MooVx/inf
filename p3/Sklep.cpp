@@ -60,14 +60,3 @@ ifstream& operator>>(std::ifstream& in, Shop& inF){
     return in;
 }
 
-ofstream& operator<<(std::ofstream& out, const Shop& outShop){
-	out << outShop._st_name << endl;
-    out << outShop._st_number << endl;
-	for (int i = 0; i < outShop._Toys.current_size(); i++){
-        out<< "##" << endl;
-		out << (outShop._Toys[i])._name << endl;
-        out << outShop._Toys[i]._amount << endl;
-		out << outShop._Toys[i]._price << endl;
-    }
-	return out;
-}
