@@ -45,6 +45,7 @@ void Firm::ModPlace(int number){
 }
 
 ostream& operator<<(ostream& out, const Firm& outF){
+	if(out )
 	out << outF._name << endl;
 	for (int i = 0; i < outF._number; i++){
 		out << outF._places[i]<<"-------"<<endl;
