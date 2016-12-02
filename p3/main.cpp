@@ -22,7 +22,7 @@ int displayMenu(){
 	cout << "3) Wyswietl firmy" << endl;
 	cout << "4) dodaj firme z pliku" << endl;
 	cout << "5) Usun firme" << endl;
-	cout << "6) Dodaj/usun zabawki do sklepu" << endl;
+	cout << "6) Wyswietl firmy iterator" << endl;
 	cout << "0) Quit" << endl;
 	cout << endl;
 	return selection;
@@ -53,7 +53,7 @@ int main()
 		ifstream fs;
 		Shop tempShop;
 		int selection = displayMenu();
-
+		bool w=0;
 		switch (selection) {
 		case 1:
 			cout << "Podaj nazwe firmy, ktora chcesz dodac:" << endl;
@@ -64,12 +64,23 @@ int main()
 			cout << "Do ktorej firmy chcesz dodac sklep?" << endl;
 			cin >> tName;
 			it = fm.begin();
-			for (int i=0; i<fm.current_size();i++){
-				if (tName ==fm[i].Name())
-					fm[i].AddPlace();
-				else 
+			// for (int i=0; i<fm.current_size();i++){
+			// 	if (tName ==fm[i].Name())
+			// 		fm[i].AddPlace();
+			// 	else 
+			// 		cerr << "Brak firmy" << endl;
+			// }
+			
+			for (it = fm.begin(); it != fm.end();it++){
+				if (tName ==(*it).Name()){
+					(*it).AddPlace();
+					w=1;
+				}
+				if(!w){
 					cerr << "Brak firmy" << endl;
+				}
 			}
+
 			break;
 		case 3:
 			for (int i=0; i<fm.current_size();i++){				

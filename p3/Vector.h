@@ -38,7 +38,7 @@ public:
     iterator end(){
         return iterator(*this) + _current_size;
     }
-    ~Vector(){ 
+    ~Vector(){
         delete [] _tab; 
     }
     
@@ -75,7 +75,7 @@ void Vector<T>::pop_back(){
 template<typename T>
 void Vector<T>::insert(const T& new_elem, int position){
     if(position>_current_size)
-        _current_size=position;
+        _current_size=position+1;
     else
         _current_size++;
     if(_current_size>=_max_size){
