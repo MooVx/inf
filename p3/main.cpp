@@ -22,7 +22,6 @@ int displayMenu(){
 	cout << "3) Wyswietl firmy" << endl;
 	cout << "4) dodaj firme z pliku" << endl;
 	cout << "5) Usun firme" << endl;
-	cout << "6) Wyswietl firmy iterator" << endl;
 	cout << "0) Quit" << endl;
 	cout << endl;
 	return selection;
@@ -44,7 +43,6 @@ int main()
 	cout << "3) Wyswietl firmy" << endl;
 	cout << "4) dodaj firme z pliku" << endl;
 	cout << "5) Usun firme" << endl;
-	cout << "6) Dodaj/usun zabawki do sklepu" << endl;
 	cout << "0) Quit" << endl;
 	while (!done)
 	{
@@ -76,9 +74,9 @@ int main()
 					(*it).AddPlace();
 					w=1;
 				}
-				if(!w){
-					cerr << "Brak firmy" << endl;
-				}
+			}
+			if(!w){
+				cerr << "Brak firmy" << endl;
 			}
 
 			break;
@@ -101,13 +99,6 @@ int main()
 			for (int i = 0; i < fm.current_size(); i++)
 				if (fm[i].Name() == tName)
 					fm.erase(i);
-			break;
-		case 6:
-			it = fm.begin();
-			while(it != fm.end()){
-			cout << (*it) << endl;
-			it++;
-			}
 			break;
 		case 0:
 			done = true;
