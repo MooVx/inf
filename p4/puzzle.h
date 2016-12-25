@@ -1,5 +1,7 @@
 #ifndef PUZZLE
 #define PUZZLE
+#include<cstring>
+#include <cstdlib>
 
 #include "lista.h"
 

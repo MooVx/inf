@@ -1,13 +1,14 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <unistd.h>
 #include "lista.h"
 #include "puzzle.h"
 
 using namespace std;
 
 int main(){
-    Puzzle p((char*)"Zmien_spacje",(char*)"Zmien spacje");
+    Puzzle p((char*)"Zmien na spacje",(char*)"Zmien_na_spacje");
     system("clear");
     p.display();
     while(!p.isSolved()){
@@ -17,8 +18,6 @@ int main(){
         p.display();
     }
     cout<<"Gratulacje puzzle rozwiązane"<<endl;
-
-
 
     return 0;
 }

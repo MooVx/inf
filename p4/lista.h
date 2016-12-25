@@ -2,6 +2,10 @@
 #define LIST
 
 #include <iostream>
+#include <new>          // std::bad_alloc
+#include<cstring>
+#include <cstdlib>
+#include <unistd.h>
 
 using namespace std;
 
@@ -22,55 +26,28 @@ class Node{
 
 template <class T>
 class List{
-private:
-    Node<T> * _first;
-	Node<T> * _last;
-	Node<T> * _node;
-    int _size;
-public:
-	List(): _size(0){}
-	virtual ~List();
-	bool isEmpty () const;
-	void print();
-	void insert(const T& new_elem);
-	void remove();
-	void replace(const T& new_data);
-	void clear ();
-	void gotoBegin();
-	void gotoEnd();
-	void gotoNext();
-	void gotoPrev();
-	T getCursor();
-	bool operator==(const List& current);
-
-
-
-    
+	private:
+		Node<T> * _first;
+		Node<T> * _last;
+		Node<T> * _node;
+		int _size;
+	public:
+		List(): _size(0){}
+		virtual ~List();
+		bool isEmpty () const;
+		void print();
+		void insert(const T& new_elem);
+		void remove();
+		void replace(const T& new_data);
+		void clear ();
+		void gotoBegin();
+		void gotoEnd();
+		void gotoNext();
+		void gotoPrev();
+		T getCursor();
+		bool operator==(const List& current); 
 };
 
-template <class T>
-void List<T>::print(){
-	Node<T>* ptr=_first;
-	do{
-		cout << ptr->_data;
-//		cout << " ";
-		ptr=ptr->_next;
-	}while (ptr!=_first);
-	cout << endl;
-	//realizacja kursora:
-	do{
-		if(ptr==_node)
-			cout << "^";
-		else
-			cout << " ";
-//		cout << " ";
-		ptr=ptr->_next;
-	}while (ptr!=_first);
-	cout << endl;
-}
-
-
-//destruktor
 template<class T>
 List<T>::~List(){
 	Node<T>* ptr= _first;
@@ -82,6 +59,33 @@ List<T>::~List(){
 	delete _last; 
 }
 
+template <class T>
+void List<T>::print(){
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		Node<T>* ptr=_first;
+		do{
+			cout << ptr->_data;
+			ptr=ptr->_next;
+		}while (ptr!=_first);
+		cout << endl;
+		//realizacja kursora:
+		do{
+			if(ptr==_node)
+				cout << "^";
+			else
+				cout << " ";
+			ptr=ptr->_next;
+		}
+		while (ptr!=_first);
+		cout << endl;
+	}
+	catch (exception& ba){
+		cerr << "logic_error Lista.print(): " << ba.what() << endl;
+		sleep(2);
+	}
+}
+
 template<class T>
 bool List<T>::isEmpty() const{
 	if(_size==0)
@@ -91,89 +95,148 @@ bool List<T>::isEmpty() const{
 
 template<class T>
 void List<T>::insert(const T& new_elem){
-	if(isEmpty()){
-		_node=new Node<T>(new_elem);
-		(*_node)._prev=_node;
-		(*_node)._next=_node;
-		_first=_node;
-		_last=_node;
+	try{
+		if(isEmpty()){
+			_node=new Node<T>(new_elem);
+			(*_node)._prev=_node;
+			(*_node)._next=_node;
+			_first=_node;
+			_last=_node;
+		}
+		else{
+			Node<T>* ptr=new Node<T>(new_elem);
+			ptr->_next=_node->_next;
+			_node->_next=ptr;
+			(ptr->_next)->_prev=ptr;
+			ptr->_prev=_node;
+			if(_node==_first&&_size!=1)_first=ptr;
+			if(_node==_last)_last=ptr;
+			_node=ptr;
+		}
 		_size++;
 	}
-	else{
-		Node<T>* ptr=new Node<T>(new_elem);
-		ptr->_next=_node->_next;
-		_node->_next=ptr;
-		(ptr->_next)->_prev=ptr;
-		ptr->_prev=_node;
-		if(_node==_first&&_size!=1)_first=ptr;
-		if(_node==_last)_last=ptr;
-
-		_node=ptr;
-		_size++;
+	catch (std::bad_alloc& ba){
+		cerr << "bad_alloc Lista.insert(): " << ba.what() << endl;
+		sleep(2);
+		exit(1);
 	}
 }
 
 template<class T>
 void List<T>::replace(const T& new_data){
-	_node->_data=new_data;
-
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		_node->_data=new_data;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.replace(): " << ba.what() << endl;
+		sleep(2);
+	}
 
 }
 
 template<class T>
 void List<T>::remove(){
-	Node<T>* N=_node->_next;
-	Node<T>* P=_node->_prev;
-	P->_next=N;
-	N->_prev=P;
-	if(_node==_first)_first=N;
-	if(_node==_last)_last=P;
-	delete _node;
-	_node=P;
-	_size--;
+	try {
+		if(isEmpty())throw logic_error("pusta lista");
+		Node<T>* N=_node->_next;
+		Node<T>* P=_node->_prev;
+		P->_next=N;
+		N->_prev=P;
+		if(_node==_first)_first=N;
+		if(_node==_last)_last=P;
+		delete _node;
+		_node=P;
+		_size--;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.remove(): " << ba.what() << endl;
+		sleep(2);
+	}	
 }
+
 template<class T>
 void List<T>::clear(){
-	Node<T>* ptr= _first;
-	while (ptr!=_last){
-		_node=ptr;
-		ptr=_node->_next;
-		delete _node;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		Node<T>* ptr= _first;
+		while (ptr!=_last){
+			_node=ptr;
+			ptr=_node->_next;
+			delete _node;
+		}
+		delete _last; 
+		_size=0;
 	}
-	delete _last; 
-	_node=NULL;
-	_first=NULL;
-	_last=NULL;
-	_size=0;
+	catch (bad_alloc &ba){
+		cerr << "Error Lista.clear(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 void List<T>::gotoBegin(){
-	_node=_first;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		_node=_first;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.gotoBegin(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 void List<T>::gotoEnd(){
-	_node=_last;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		_node=_last;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.gotoEnd(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 void List<T>::gotoNext(){
-	_node=_node->_next;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		_node=_node->_next;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.gotoNext(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 void List<T>::gotoPrev(){
-	_node=_node->_prev;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		_node=_node->_prev;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.gotoPrev(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 T List<T>::getCursor(){
-	return _node->_data;
+	try{
+		if(isEmpty())throw logic_error("pusta lista");
+		return _node->_data;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.getCursor(): " << ba.what() << endl;
+		sleep(2);
+	}
 }
 
 template<class T>
 bool List<T>::operator==(const List<T>& current){
+	try{
 	Node<T>* ptr1=_first;
 	Node<T>* ptr2=current._first;
     do{
@@ -183,6 +246,12 @@ bool List<T>::operator==(const List<T>& current){
 		ptr2=ptr2->_next;
     }while (ptr1!=_first);
 	return true;
+	}
+	catch (logic_error& ba){
+		cerr << "logic_error Lista.gotoBegin(): " << ba.what() << endl;
+		sleep(2);
+		exit(1);
+	}
 }
 
 
