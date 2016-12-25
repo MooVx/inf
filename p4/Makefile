@@ -1,16 +1,14 @@
 fine: main
-	rm -f main.o firm.o shop.o
+	rm -f *.o
 
-main: main.o firm.o shop.o
-	g++ -lm -o main main.o firm.o shop.o
+main: main.o puzzle.o
+	g++ -lm -o main main.o puzzle.o
 
-main.o: main.cpp Vector.h Iterator.h Firma.h
+main.o: lista.h 
 	g++ -Wall -c main.cpp -o main.o
 
-firm.o: Firma.cpp Firma.h
-	g++ -Wall -c Firma.cpp -o firm.o
-
-
+puzzle.o: puzzle.cpp puzzle.h
+	g++ -Wall -c puzzle.cpp -o puzzle.o
 
 .Phony: clean fine main
 
